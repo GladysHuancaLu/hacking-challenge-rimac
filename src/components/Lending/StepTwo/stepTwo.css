@@ -1,0 +1,12 @@
+.base{
+    background-image: url("https://user-images.githubusercontent.com/45082443/60709231-8d752c80-9ed5-11e9-8be4-c27150d706f6.png");
+    background-size: 100% 100%;
+}
+.container-grid{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+}
+.height{
+    height: 100vh;
+}
