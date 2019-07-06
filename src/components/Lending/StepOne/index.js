@@ -1,9 +1,13 @@
 import React from 'react';
+import useForm from "react-hook-form";
 import './stepOne.css'; 
 
 
-const StepOne = ({ nextStep, updateInput, updateName}) => {
-  const onSubmit = () => {
+const StepOne = ({ nextStep, inputValues}) => {
+  const { register, handleSubmit} = useForm(); // initialise the hook
+
+  const onSubmit = (data) => {
+    inputValues(data)
     nextStep();
   }; 
 
@@ -13,21 +17,23 @@ const StepOne = ({ nextStep, updateInput, updateName}) => {
        <img src="https://user-images.githubusercontent.com/45082443/60709311-bc8b9e00-9ed5-11e9-8977-b8be10ddeb6a.png" alt="logo" />
       </div>
       <div className="col-6 height">
-       <form className="col-sm-12" onSubmit={onSubmit}>
+       <form className="col-sm-12" onSubmit={handleSubmit(onSubmit)}>
+         <h2>Protégelos ahora</h2>
+         <p>Ingresa los datos del titular</p>
           <div className="form-group col-sm-3">
           <label htmlFor="dni">DNI:</label><br />
               <input
                 className="input-border"
                 placeholder="dni"
                 name="dni"
-                onChange = {updateInput}
+                ref={register}
               /> 
               <label htmlFor="name">Nombre:</label><br />
               <input
                 className="input-border"
                 placeholder="Ingrese nmbre"
                 name="name"
-                onChange = {updateName}
+                ref={register}
               />              
           </div>
           <div className="form-group text-center m-5">
