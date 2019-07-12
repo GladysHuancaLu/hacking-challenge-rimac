@@ -11,7 +11,7 @@ const Home = () => (
           </div>
           <div className="col-6 height">
             <button type="button" className="btn-solucion color-red mt-5">
-             <Link to="/lending" className="links">COMENCEMOS</Link>
+             <Link to="/Steps" className="links">COMENCEMOS</Link>
             </button>
           </div>
         </div>

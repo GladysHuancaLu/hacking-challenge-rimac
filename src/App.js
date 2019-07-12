@@ -1,12 +1,12 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Lending from './components/Lending';
+import Steps from './components/Steps';
 
 const app = () => (
   <HashRouter >
     <Route path="/" exact component={Home} />
-    <Route path="/lending" component={Lending} />
+    <Route path="/steps" component={Steps} />
   </HashRouter>
 );
 

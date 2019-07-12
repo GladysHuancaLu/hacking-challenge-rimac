@@ -1,8 +1,8 @@
 import React from 'react';
 import useForm from "react-hook-form";
-import './stepTwo.css'; 
+import './stepOne.css'; 
 
-const StepTwo = ( { nextStep, updateRegister, registerUser}) => {
+const StepOne = ( { nextStep, updateRegister, registerUser}) => {
   const { register, handleSubmit} = useForm(); // initialise the hook
     const onSubmit = (data) => {
       updateRegister(data)
@@ -55,4 +55,4 @@ const StepTwo = ( { nextStep, updateRegister, registerUser}) => {
     )
 
 };
-export default StepTwo;
+export default StepOne;

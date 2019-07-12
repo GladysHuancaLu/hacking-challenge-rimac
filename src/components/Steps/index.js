@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import Layout from '../Layout';
-import StepTwo from './StepTwo';
+import axios from "axios";
+// import Layout from '../Layout';
+import Register from './Register';
 import StepOne from './StepOne';
+import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFour from './StepFour';
-import StepFive from './StepFive';
 
 
-const Lending = () => {
-  const [step, setStep] = useState(1);
+const Steps = () => {
+  const [step, setStep] = useState(0);
   const [registerUser, setRegisterUser] = useState({});
   const [registerUserDate, setRegisterUserDate] = useState({});
   const [add, setAdd] = useState(false); // boton para mostrar template de agregar nuevo asegurado
   const [tarjeta, setTarjeta] = useState({});
   const [insuredGroup, setInsuredGroup] = useState([]); // aca debe ir el array de objetos de los asegurados
-
-
+  useEffect(() => {
+    axios({
+      url: "https://freestyle.getsandbox.com/dummy/obtenerdatospersona",
+      method: "POST",
+      mode: 'cors',
+      header: {},
+      body: {},
+  })
+  .then(resp => console.log(resp.data))  
+  .catch(err => console.log(err))
+  }, []);
   useEffect(() => {
     console.log(registerUser);
   }, [registerUser]);
@@ -55,22 +65,22 @@ const Lending = () => {
 
   
   return (
-    <Layout>
-      {step === 1 && (
-      <StepOne
+    <div>
+      {step === 0 && (
+      <Register
       nextStep={nextStep} 
       inputValues={inputValues}
       />
       )}
-      {step === 2 && (
-      <StepTwo
+      {step === 1 && (
+      <StepOne
         nextStep={nextStep}
         updateRegister={updateRegister}
         registerUser={registerUser}
       />
       )}
-      {step === 3 && (
-      <StepThree
+      {step === 2 && (
+      <StepTwo
         nextStep={nextStep}
         add={add}
         addChange={addChange}
@@ -82,23 +92,22 @@ const Lending = () => {
 
       />
       )}
-      {step === 4 && ( 
-        <StepFour
+      {step === 3 && ( 
+        <StepThree
           nextStep={nextStep}
           insuredGroup={insuredGroup}
           updateTarjeta={updateTarjeta}
           tarjeta={tarjeta}
-          // updateTarjeta={updateTarjeta}
         />
       )}
-      {step === 5 && (
-      <StepFive 
+      {step === 4 && (
+      <StepFour
       registerUser={registerUser}
       />
       )}
 
-    </Layout>
+    </div>
   );
 };
 
-export default Lending;
+export default Steps;

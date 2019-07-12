@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const StepFive = (registerUser) => {
+const StepFour = (registerUser) => {
 
     return (
         <div className="container-fluid height">
@@ -27,4 +27,4 @@ const StepFive = (registerUser) => {
     )
 
 };
-export default StepFive;
+export default StepFour;
